@@ -1,15 +1,15 @@
-##  名称 {#_name}
+## 名称 {#_name}
 
-git-add - Add file contents to the index
+git-add - 添加文件内容到索引
 
-## SYNOPSIS {#_synopsis}
+## 摘要 {#_synopsis}
 
 ```
 git add
  [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
-	  [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
-	  [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing]
-	  [--chmod=(+|-)x] [--] [
+      [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
+      [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing]
+      [--chmod=(+|-)x] [--] [
 <
 pathspec
 >
@@ -26,13 +26,11 @@ This command can be performed multiple times before a commit. It only adds the c
 
 The`git status`command can be used to obtain a summary of which files have changes that are staged for the next commit.
 
-The`git add`command will not add ignored files by default. If any ignored files were explicitly specified on the command line,`git add`will fail with a list of ignored files. Ignored files reached by directory recursion or filename globbing performed by Git \(quote your globs before the shell\) will be silently ignored. The_git add_command can be used to add ignored files with the`-f`\(force\) option.
+The`git add`command will not add ignored files by default. If any ignored files were explicitly specified on the command line,`git add`will fail with a list of ignored files. Ignored files reached by directory recursion or filename globbing performed by Git \(quote your globs before the shell\) will be silently ignored. The\_git add\_command can be used to add ignored files with the`-f`\(force\) option.
 
 Please see[git-commit\[1\]](https://git-scm.com/docs/git-commit)for alternative ways to add content to a commit.
 
 ## 选项 {#_options}
-
-
 
 &lt;
 
@@ -44,53 +42,33 @@ pathspec
 
 Files to add content from. Fileglobs \(e.g.`*.c`\) can be given to add all matching files. Also a leading directory name \(e.g.`dir`to add`dir/file1`and`dir/file2`\) can be given to update the index to match the current state of the directory as a whole \(e.g. specifying`dir`will record not just a file`dir/file1`modified in the working tree, a file`dir/file2`added to the working tree, but also a file`dir/file3`removed from the working tree. Note that older versions of Git used to ignore removed files; use`--no-all`option if you want to add modified or new files but ignore removed ones.
 
-For more details about the &lt;pathspec&gt; syntax, see the_pathspec_entry in[gitglossary\[7\]](https://git-scm.com/docs/gitglossary).
-
-
+For more details about the &lt;pathspec&gt; syntax, see the\_pathspec\_entry in[gitglossary\[7\]](https://git-scm.com/docs/gitglossary).
 
 -n
-
-
 
 --dry-run
 
 Don’t actually add the file\(s\), just show if they exist and/or will be ignored.
 
-
-
 -v
-
-
 
 --verbose
 
 Be verbose.
 
-
-
 -f
-
-
 
 --force
 
 Allow adding otherwise ignored files.
 
-
-
 -i
-
-
 
 --interactive
 
 Add modified contents in the working tree interactively to the index. Optional path arguments may be supplied to limit operation to a subset of the working tree. See “Interactive mode” for details.
 
-
-
 -p
-
-
 
 --patch
 
@@ -98,11 +76,7 @@ Interactively choose hunks of patch between the index and the work tree and add 
 
 This effectively runs`add --interactive`, but bypasses the initial command menu and directly jumps to the`patch`subcommand. See “Interactive mode” for details.
 
-
-
 -e
-
-
 
 --edit
 
@@ -110,11 +84,7 @@ Open the diff vs. the index in an editor and let the user edit it. After the edi
 
 The intent of this option is to pick and choose lines of the patch to apply, or even to modify the contents of lines to be staged. This can be quicker and more flexible than using the interactive hunk selector. However, it is easy to confuse oneself and create a patch that does not apply to the index. See EDITING PATCHES below.
 
-
-
 -u
-
-
 
 --update
 
@@ -122,15 +92,9 @@ Update the index just where it already has an entry matching &lt;pathspec&gt;. T
 
 If no &lt;pathspec&gt; is given when`-u`option is used, all tracked files in the entire working tree are updated \(old versions of Git used to limit the update to the current directory and its subdirectories\).
 
-
-
 -A
 
-
-
 --all
-
-
 
 --no-ignore-removal
 
@@ -138,11 +102,7 @@ Update the index not only where the working tree has a file matching &lt;pathspe
 
 If no &lt;pathspec&gt; is given when`-A`option is used, all files in the entire working tree are updated \(old versions of Git used to limit the update to the current directory and its subdirectories\).
 
-
-
 --no-all
-
-
 
 --ignore-removal
 
@@ -150,47 +110,31 @@ Update the index by adding new files that are unknown to the index and files mod
 
 This option is primarily to help users who are used to older versions of Git, whose "git add &lt;pathspec&gt;…​" was a synonym for "git add --no-all &lt;pathspec&gt;…​", i.e. ignored removed files.
 
-
-
 -N
-
-
 
 --intent-to-add
 
 Record only the fact that the path will be added later. An entry for the path is placed in the index with no content. This is useful for, among other things, showing the unstaged content of such files with`git diff`and committing them with`git commit -a`.
 
-
-
 --refresh
 
 Don’t add the file\(s\), but only refresh their stat\(\) information in the index.
-
-
 
 --ignore-errors
 
 If some files could not be added because of errors indexing them, do not abort the operation, but continue adding the others. The command shall still exit with non-zero status. The configuration variable`add.ignoreErrors`can be set to true to make this the default behaviour.
 
-
-
 --ignore-missing
 
 This option can only be used together with --dry-run. By using this option the user can check if any of the given files would be ignored, no matter if they are already present in the work tree or not.
-
-
 
 --no-warn-embedded-repo
 
 By default,`git add`will warn when adding an embedded repository to the index without using`git submodule add`to create an entry in`.gitmodules`. This option will suppress the warning \(e.g., if you are manually performing operations on submodules\).
 
-
-
 --chmod=\(+\|-\)x
 
 Override the executable bit of the added files. The executable bit is only changed in the index, the files on disk are left unchanged.
-
-
 
 --
 
@@ -220,7 +164,7 @@ The optional configuration variable`core.excludesFile`indicates a path to a file
 
 ## Interactive mode {#_interactive_mode}
 
-When the command enters the interactive mode, it shows the output of the_status_subcommand, and then goes into its interactive command loop.
+When the command enters the interactive mode, it shows the output of the\_status\_subcommand, and then goes into its interactive command loop.
 
 The command loop shows the list of subcommands available, and gives a prompt "What now&gt; ". In general, when the prompt ends with a single_&gt;_, you can pick only one of the choices given and type return, like this:
 
@@ -237,8 +181,6 @@ You also could say`s`or`sta`or`status`above as long as the choice is unique.
 
 The main command loop has 6 subcommands \(plus help and quit\).
 
-
-
 status
 
 This shows the change between HEAD and index \(i.e. what will be committed if you say`git commit`\), and between index and working tree files \(i.e. what you could stage further before`git commit`using`git add`\) for each path. A sample output looks like this:
@@ -249,13 +191,11 @@ This shows the change between HEAD and index \(i.e. what will be committed if yo
      2:     +403/-35        +1/-1 git-add--interactive.perl
 ```
 
-It shows that foo.png has differences from HEAD \(but that is binary so line count cannot be shown\) and there is no difference between indexed copy and the working tree version \(if the working tree version were also different,_binary_would have been shown in place of_nothing_\). The other file, git-add{litdd}interactive.perl, has 403 lines added and 35 lines deleted if you commit what is in the index, but working tree file has further modifications \(one addition and one deletion\).
-
-
+It shows that foo.png has differences from HEAD \(but that is binary so line count cannot be shown\) and there is no difference between indexed copy and the working tree version \(if the working tree version were also different,_binary\_would have been shown in place of\_nothing_\). The other file, git-add{litdd}interactive.perl, has 403 lines added and 35 lines deleted if you commit what is in the index, but working tree file has further modifications \(one addition and one deletion\).
 
 update
 
-This shows the status information and issues an "Update&gt;&gt;" prompt. When the prompt ends with double_&gt;&gt;_, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. "2-5 7,9" to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining patches are taken. E.g. "7-" to choose 7,8,9 from the list. You can say_\*_to choose everything.
+This shows the status information and issues an "Update&gt;&gt;" prompt. When the prompt ends with double_&gt;&gt;_, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. "2-5 7,9" to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining patches are taken. E.g. "7-" to choose 7,8,9 from the list. You can say\_\*\_to choose everything.
 
 What you chose are then highlighted with_\*_, like this:
 
@@ -276,23 +216,17 @@ Update
 
 After making the selection, answer with an empty line to stage the contents of working tree files for selected paths in the index.
 
-
-
 revert
 
 This has a very similar UI to_update_, and the staged information for selected paths are reverted to that of the HEAD version. Reverting new paths makes them untracked.
 
-
-
 add untracked
 
-This has a very similar UI to_update_and_revert_, and lets you add untracked paths to the index.
-
-
+This has a very similar UI to_update\_and\_revert_, and lets you add untracked paths to the index.
 
 patch
 
-This lets you choose one path out of a_status_like selection. After choosing the path, it presents the diff between the index and the working tree file and asks you if you want to stage the change of each hunk. You can select one of the following options and type return:
+This lets you choose one path out of a\_status\_like selection. After choosing the path, it presents the diff between the index and the working tree file and asks you if you want to stage the change of each hunk. You can select one of the following options and type return:
 
 ```
 y - stage this hunk
@@ -315,8 +249,6 @@ After deciding the fate for all hunks, if there is any hunk that was chosen, the
 
 You can omit having to type return here, by setting the configuration variable`interactive.singleKey`to`true`.
 
-
-
 diff
 
 This lets you review what will be committed \(i.e. between HEAD and index\).
@@ -325,19 +257,13 @@ This lets you review what will be committed \(i.e. between HEAD and index\).
 
 Invoking`git add -e`or selecting`e`from the interactive hunk selector will open a patch in your editor; after the editor exits, the result is applied to the index. You are free to make arbitrary changes to the patch, but note that some changes may have confusing results, or even result in a patch that cannot be applied. If you want to abort the operation entirely \(i.e., stage nothing new in the index\), simply delete all lines of the patch. The list below describes some common things you may see in a patch, and which editing operations make sense on them.
 
-
-
 added content
 
 Added content is represented by lines beginning with "+". You can prevent staging any addition lines by deleting them.
 
-
-
 removed content
 
 Removed content is represented by lines beginning with "-". You can prevent staging their removal by converting the "-" to a " " \(space\).
-
-
 
 modified content
 
@@ -347,19 +273,13 @@ There are also more complex operations that can be performed. But beware that be
 
 Avoid using these constructs, or do so with extreme caution.
 
-
-
 removing untouched content
 
 Content which does not differ between the index and working tree may be shown on context lines, beginning with a " " \(space\). You can stage context lines for removal by converting the space to a "-". The resulting working tree file will appear to re-add the content.
 
-
-
 modifying existing content
 
 One can also modify context lines by staging them for removal \(by converting " " to "-"\) and adding a "+" line with the new content. Similarly, one can modify "+" lines for existing additions or modifications. In all cases, the new modification will appear reverted in the working tree.
-
-
 
 new content
 
