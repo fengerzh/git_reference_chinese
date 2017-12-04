@@ -18,7 +18,7 @@ pathspec
 
 ## 描述 {#_description}
 
-This command updates the index using the current content found in the working tree, to prepare the content staged for the next commit. It typically adds the current content of existing paths as a whole, but with some options it can also be used to add content with only part of the changes made to the working tree files applied, or remove paths that do not exist in the working tree anymore.
+此命令用工作目录中的当前内容更新索引，为下一次提交准备暂存区中的内容。它通常情况下添加已存在路径下的所有内容，但通过选项设定也可以用于添加对于工作目录中的部分修改，或者删除已经不再存在于工作目录中的路径。
 
 The "index" holds a snapshot of the content of the working tree, and it is this snapshot that is taken as the contents of the next commit. Thus after making any changes to the working tree, and before running the commit command, you must use the`add`command to add any new or modified files to the index.
 
@@ -48,19 +48,19 @@ For more details about the &lt;pathspec&gt; syntax, see the\_pathspec\_entry in[
 
 --dry-run
 
-Don’t actually add the file\(s\), just show if they exist and/or will be ignored.
+不真正添加文件，只用于显示它们是否存在或是否将被忽略。
 
 -v
 
 --verbose
 
-Be verbose.
+详细输出。
 
 -f
 
 --force
 
-Allow adding otherwise ignored files.
+允许添加被忽略的文件。
 
 -i
 
@@ -140,11 +140,11 @@ Override the executable bit of the added files. The executable bit is only chang
 
 This option can be used to separate command-line options from the list of files, \(useful when filenames might be mistaken for command-line options\).
 
-## Configuration {#_configuration}
+## 配置 {#_configuration}
 
 The optional configuration variable`core.excludesFile`indicates a path to a file containing patterns of file names to exclude from git-add, similar to $GIT\_DIR/info/exclude. Patterns in the exclude file are used in addition to those in info/exclude. See[gitignore\[5\]](https://git-scm.com/docs/gitignore).
 
-## EXAMPLES {#_examples}
+## 示例 {#_examples}
 
 * Adds content from all`*.txt`files under`Documentation`directory and its subdirectories:
 
@@ -162,7 +162,7 @@ The optional configuration variable`core.excludesFile`indicates a path to a file
 
   Because this example lets the shell expand the asterisk \(i.e. you are listing the files explicitly\), it does not consider`subdir/git-foo.sh`.
 
-## Interactive mode {#_interactive_mode}
+## 交互模式 {#_interactive_mode}
 
 When the command enters the interactive mode, it shows the output of the\_status\_subcommand, and then goes into its interactive command loop.
 
@@ -293,7 +293,7 @@ There are also several operations which should be avoided entirely, as they will
 
 * modifying the contents of context or removal lines
 
-## SEE ALSO {#_see_also}
+## 参见 {#_see_also}
 
 [git-status\[1\]](https://git-scm.com/docs/git-status)[git-rm\[1\]](https://git-scm.com/docs/git-rm)[git-reset\[1\]](https://git-scm.com/docs/git-reset)[git-mv\[1\]](https://git-scm.com/docs/git-mv)[git-commit\[1\]](https://git-scm.com/docs/git-commit)[git-update-index\[1\]](https://git-scm.com/docs/git-update-index)
 
