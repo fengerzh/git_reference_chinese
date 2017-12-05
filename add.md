@@ -20,11 +20,11 @@ pathspec
 
 此命令用工作目录中的当前内容更新索引，为下一次提交准备暂存区中的内容。它通常情况下添加已存在路径下的所有内容，但通过选项设定也可以用于添加对于工作目录中的部分修改，或者删除已经不再存在于工作目录中的路径。
 
-The "index" holds a snapshot of the content of the working tree, and it is this snapshot that is taken as the contents of the next commit. Thus after making any changes to the working tree, and before running the commit command, you must use the`add`command to add any new or modified files to the index.
+"索引"保存了工作目录内容的一份快照，在下一次提交时将提交快照中的内容。因此在对工作目录做了任何修改后，执行提交命令commit之前，你必须用add命令把新增的或修改的文件添加到索引。
 
-This command can be performed multiple times before a commit. It only adds the content of the specified file\(s\) at the time the add command is run; if you want subsequent changes included in the next commit, then you must run`git add`again to add the new content to the index.
+此命令可以在`commit`之前执行多次。它只把`add`命令执行时指定的文件修改内容添加到索引；如果你想在下一次`commit`时把后续修改内容也包含进去，你必须再次执行`git add` 来把新内容加入索引。
 
-The`git status`command can be used to obtain a summary of which files have changes that are staged for the next commit.
+`git status` 命令可以用于获取下一次提交前哪些文件被修改的总结。
 
 The`git add`command will not add ignored files by default. If any ignored files were explicitly specified on the command line,`git add`will fail with a list of ignored files. Ignored files reached by directory recursion or filename globbing performed by Git \(quote your globs before the shell\) will be silently ignored. The\_git add\_command can be used to add ignored files with the`-f`\(force\) option.
 
