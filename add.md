@@ -26,9 +26,9 @@ pathspec
 
 `git status` 命令可以用于获取下一次提交前哪些文件被修改的总结。
 
-The`git add`command will not add ignored files by default. If any ignored files were explicitly specified on the command line,`git add`will fail with a list of ignored files. Ignored files reached by directory recursion or filename globbing performed by Git \(quote your globs before the shell\) will be silently ignored. The\_git add\_command can be used to add ignored files with the`-f`\(force\) option.
+`git add`命令缺省不添加被忽略的文件。如果在命令行明确指定添加某些被忽略的文件，`git add`命令会失败，并列出所有被忽略的文件。通过目录递归方式到达的忽略文件或通过Git globbing方式\(在shell命令中引用globs\)到达的忽略文件，将被静默忽略。`git add`命令可以通过增加`-f`\(强制\)选项来添加被忽略文件。
 
-Please see[git-commit\[1\]](https://git-scm.com/docs/git-commit)for alternative ways to add content to a commit.
+请参阅[git-commit\[1\]](https://git-scm.com/docs/git-commit)命令了解其他添加内容到提交的方法。
 
 ## 选项 {#_options}
 
